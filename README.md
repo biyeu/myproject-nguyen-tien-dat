@@ -1,2 +1,2 @@
 # myproject-nguyen-tien-dat
-uj
+fget4qug hello word
