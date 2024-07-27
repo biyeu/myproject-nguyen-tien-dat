@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="forum.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="taskbar">
+      <ul class="task-list">
+        <li>Comment Book</li>
+        <li id="next">Read Book</li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="comment">
+        <input type="text" id="mhv" placeholder="Say something here..." />
+        <br />
+        <div class="none">
+          <label>Người dùng:</label> <input type="text" id="classbox" />
+          <br />
+        </div>
+
+        <button id="ins-btn">Comment</button>
+        <br />
+      </div>
+      <div id="tbody1" class="com"></div>
+    </div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        setDoc,
+        onSnapshot,
+        doc,
+      } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyD4UAGeeNt1gSgqiX0VrZAnp0pcXKgVe_Q",
+        authDomain: "ebook-c4db2.firebaseapp.com",
+        projectId: "ebook-c4db2",
+        storageBucket: "ebook-c4db2.appspot.com",
+        messagingSenderId: "599461847170",
+        appId: "1:599461847170:web:ac4c82171ade4ec97ed49b",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      var db = getFirestore();
+
+      //khai báo biến
+      let mahv = document.getElementById("mhv");
+      let lophv = document.getElementById("classbox");
+
+      //button
+      let addhv = document.getElementById("ins-btn");
+
+      //thêm mới vs id tuỳ chọn
+      async function AddDocument_CustomId() {
+        var ref = doc(db, "Thongtin", mahv.value);
+
+        const docRef = await setDoc(ref, {
+          mahvFB: mahv.value,
+          lophvFB: lophv.value,
+        }).then(() => {
+          alert("comment success");
+        });
+      }
+
+      //xử lý sự kiện
+      addhv.addEventListener("click", AddDocument_CustomId);
+
+      
+      function myFunction() {
+        const element = document.getElementById("not-"+mahv);
+        element.remove();
+      }
+      
+      var tbody = document.getElementById("tbody1");
+      function hanleClick(mahv) {
+        let set = document.getElementById("button-change-" + mahv);
+        let textChange = document.getElementById("text-change-" + mahv);
+        // set &&
+        //   set.addEventListener("click", function () {
+          
+          document.getElementById("text-change-" + mahv)
+          ? (textChange.innerHTML = `<input type="text">`)
+          : "";
+          // });
+        }
+        // xu ly btn change
+        const list = document.querySelectorAll(".button-change");
+        document &&
+        document.addEventListener("click", (e) => {
+          console.log(e.target.getAttribute("data-id"));
+          const idChangeInput = e.target.getAttribute("data-id");
+          let textChange = document.getElementById(idChangeInput);
+          document.getElementById(idChangeInput)
+          ? (textChange.innerHTML = `<input type="text" id="input_change">`)
+          : "";
+        });
+        // dat lai gia tri
+        const change = document.querySelector(".submi");
+        document &&
+        document.addEventListener("click", (e) => {
+          console.log(e.target.getAttribute("data-id"));
+          const idChangeInput = e.target.getAttribute("data-id");
+          let textChange = document.getElementById(idChangeInput);
+          const value =
+          document.getElementById("input_change") &&
+          document.getElementById("input_change").value;
+          console.log(value);
+          if (value != null) {
+            textChange.innerHTML = `<h1>${value}</h1>`;
+          }
+        });
+        
+        function AddItemToTable(mahv, lophv) {
+          const handleClickItem = () => {};
+          let trow = document.createElement("ul");
+          trow.setAttribute("id","not-"+mahv)
+          let nae = document.createElement("p");
+          let td1 = document.createElement("h1");
+          td1.setAttribute("id", "text-change-" + mahv);
+          // let del = document.createElement("button");
+          // del.setAttribute("class", "deletbtn");
+          // del.setAttribute("id", "delete-btn-" + mahv);
+          // del.setAttribute("onclick", myFunction())
+          let change = document.createElement("button");
+          change.setAttribute("class", "button-change");
+          change.setAttribute("data-id", "text-change-" + mahv);
+          // change.setAttribute("onclick", "handleClickItem()");
+          let td2 = document.createElement("h1");
+          const user = localStorage.getItem("user");
+          console.log(user);
+          const userInfo = JSON.parse(user);
+          
+          let submitChange = document.createElement("button");
+          submitChange.setAttribute("class", "submi");
+          submitChange.setAttribute("data-id", "tex-" + mahv);
+          
+          nae.innerHTML = userInfo.name;
+          td1.innerHTML = mahv;
+          // del.textContent = "Delete";
+          change.textContent = "change";
+          submitChange.textContent = "submit";
+          td2.innerHTML = lophv;
+          
+          trow.appendChild(nae);
+          trow.appendChild(td1);
+          // trow.appendChild(del);
+          // trow.appendChild(change);
+          // trow.appendChild(submitChange);
+          trow.appendChild(td2);
+          
+          tbody.appendChild(trow);
+        }
+        
+        function AddAllItemToTable(hocvien) {
+          tbody.innerHTML = " ";
+          hocvien.forEach((element) => {
+            AddItemToTable(element.mahvFB, element.lophvFB);
+          });
+        }
+        
+        async function getAllDataRealtime() {
+          const dbRef = await collection(db, "Thongtin");
+          onSnapshot(dbRef, (query) => {
+            var students = [];
+            query.forEach((doc) => {
+              students.push(doc.data());
+            });
+            AddAllItemToTable(students);
+          });
+        }
+        
+        //window.onload = GetAllData;
+        window.onload = getAllDataRealtime;
+        document.getElementById("delete-btn-" + mahv).addEventListener("click",function(){
+          document.getElementById("not-"+mahv).style.display = "none"
+        })
+        </script>
+    <script src="forum.js"></script>
+  </body>
+</html>

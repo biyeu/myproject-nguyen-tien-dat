@@ -1,0 +1,162 @@
+body {
+    background-color: #0324a8 !important;
+  }
+  
+  .book-home {
+    background-color: #e29300;
+    color: #000;
+    height: 70px;
+    width: 100%;
+  }
+  .book-home-topic {
+    display: flex;
+    font-size: 1.4rem;
+    /* justify-content: center; */
+    justify-content: space-around;
+  }
+  
+  /* .book_task{
+      
+  } */
+  .book-task-text,
+  .book-home-topic button {
+    margin-top: 13px;
+  }
+  
+  .book-task-text a {
+    color: #000;
+    font-size: 1.7rem;
+    text-decoration: none;
+  }
+  
+  .book-search {
+    display: flex;
+  }
+  
+  .btnsearch {
+    height: 43px;
+    border: none;
+    border-start-end-radius: 25px;
+    border-end-end-radius: 25px;
+  }
+  
+  .book-task-text a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .google-button {
+    width: 117px;
+    height: 42px;
+    margin-top: 8px;
+    border-radius: 23px;
+    border: none;
+    background-color: blue;
+    color: #fff;
+    font-size: 1.4rem;
+  }
+  .book-task-text input {
+    border: none;
+    border-radius: 25px;
+    width: 112%;
+    padding-left: 28px;
+    height: 43px;
+    padding-bottom: 5px;
+  }
+  
+  
+  .book-list {
+    margin-top: 50px;
+    visibility: hidden;
+  }
+  
+  .text-center {
+    color: #fff;
+  }
+  .search-btn {
+    margin-top: 0px !important;
+    border-end-end-radius: 23px !important;
+    border-start-end-radius: 23px !important;
+  }
+  
+  .form-control {
+    width: 303px;
+  }
+  
+  .mr-3,
+  .mx-3 {
+    margin-right: 16rem !important;
+  }
+  
+  .creat button{
+    border: none;
+    background-color: #ffb600;
+    width: 100%;
+    border-radius: 25px;
+    margin-bottom: 23px;
+  }
+  
+  .thumb-bg{
+    border-radius: 6px;
+    height: 10%;
+    
+  }
+  .google-button {
+    width: 117px;
+    height: 43px;
+    margin-top: 8px;
+    border-radius: 23px;
+    border: none;
+    background-color: blue;
+    color: #fff;
+    font-size: 1.4rem;
+  }
+  
+  .bo {
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    justify-content: flex-start;
+  }
+  
+  .bo i {
+    font-size: 1.7rem;
+  }
+  .account-task {
+    margin-top: 32px;
+    width: 100%;
+    /* visibility: hidden; */
+    display: none;
+    border-radius: 23px;
+    background-color: #f3f3f3;
+    border: solid 0.1px #000;
+  }
+  .account-set img {
+    border-radius: 50%;
+    margin-bottom: 19px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .account-set {
+    padding-top: 27px;
+    margin-left: 23px;
+    padding-right: 30px;
+  }
+  
+  .account-set p {
+    font-size: 16px;
+  }
+  
+  .account-log {
+    border-radius: 25px;
+    border: none;
+    font-size: 1.4rem;
+    background-color: red;
+    width: 100%;
+    margin-bottom: 23px;
+  }
+  
+  #viewerCanvas{
+    margin-right: 22% !important;
+  }

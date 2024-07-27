@@ -1,0 +1,95 @@
+body {
+    background: #0101 !important;
+  }
+  
+  .task-list {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding-top: 9px;
+    font-size: 1.6rem;
+    margin: 0;
+    /* line-height: 44px; */
+  }
+  
+  .task-list input {
+    margin-top: 8px;
+    width: 245px;
+    border: none;
+    border-radius: 20px;
+    padding-left: 24px;
+    height: 28px;
+  }
+  
+  
+  
+  .taskbar {
+    z-index: 1000;
+    margin-top: 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    background-color: #ffb600;
+    height: 66px;
+  }
+  .task-list li:hover {
+    color: #fff;
+  }
+  
+  .search {
+    padding: 2px;
+    visibility: visible;
+    border-radius: 10px;
+    border: solid;
+    width: 100%;
+    margin: auto;
+    outline: none;
+    transition: all 0.5s;
+  }
+  
+  .search:hover {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+  }
+  
+  .content{
+    margin-top: 29px;
+    margin-left: 23px;
+    display: block;
+  }
+  .comment{
+    display: block;
+    margin-bottom: 23px;
+  }
+  
+  .comment input{
+    width: 95%;
+    min-width: 82%;
+    margin-bottom: 23px;
+    height: 34px;
+  }
+  
+  .comment button{
+    width: 117px;
+    height: 43px;
+    margin-top: 8px;
+    border-radius: 23px;
+    border: none;
+    background-color: blue;
+    color: #fff;
+    font-size: 1.0rem;
+  }
+  
+  .none{
+    display: none;
+  }
+  
+  .com{
+    border: 1px solid;
+    border-radius: 23px;
+    padding-left: 23px;
+  }
+  
+  .com ul h1{
+    border-bottom: 1px solid;
+    width: 94%;
+    min-width: 82%;
+  }
