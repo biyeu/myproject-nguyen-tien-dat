@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <button id="btnGoogle" type="button" class="google-button">
+        Login
+      </button>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+  
+  
+       
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyB8ogMCDsC7JJ87SwZp7pOyNsh1H34Ej2M",
+          authDomain: "test-74c90.firebaseapp.com",
+          projectId: "test-74c90",
+          storageBucket: "test-74c90.appspot.com",
+          messagingSenderId: "49067418419",
+          appId: "1:49067418419:web:671da27a119ccf6c9f1446",
+        };
+  
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+      <script>
+        function clickLogout() {
+          // Clear user data from profile view
+          document.querySelector(".display_name").textContent = "";
+          document.querySelector(".email").textContent = "";
+          document.querySelector(".avatar").src = "";
+  
+          // Remove user from localStorage
+          localStorage.removeItem("user");
+          document.querySelector(".name").textContent = "";
+        }
+  
+        // Call this function after a successful login to update the profile
+        function updateProfile(user) {
+          document.querySelector(".display_name").textContent = user.displayName;
+          document.querySelector(".email").textContent = user.email;
+          document.querySelector(".avatar").src = user.photoURL;
+          document.querySelector(".name").textContent = userInfo.name;
+        }
+  
+        (function () {
+          console.log("Start file login with firebase");
+          // Initialize Firebase
+          const firebaseConfig = {
+            apiKey: "AIzaSyD4UAGeeNt1gSgqiX0VrZAnp0pcXKgVe_Q",
+            authDomain: "ebook-c4db2.firebaseapp.com",
+            projectId: "ebook-c4db2",
+            storageBucket: "ebook-c4db2.appspot.com",
+            messagingSenderId: "599461847170",
+            appId: "1:599461847170:web:9e0252a57f46da6b7ed49b",
+          };
+          firebase.initializeApp(firebaseConfig);
+          // var database = firebase.database();
+  
+          //Google singin provider
+          var ggProvider = new firebase.auth.GoogleAuthProvider();
+          //Facebook singin provider
+          var fbProvider = new firebase.auth.FacebookAuthProvider();
+          //Login in variables
+          const btnGoogle = document.getElementById("btnGoogle");
+          const btnFaceBook = document.getElementById("btnFacebook");
+  
+          //Sing in with Google
+          btnGoogle &&
+            btnGoogle.addEventListener(
+              "click",
+              (e) => {
+                alert();
+                firebase
+                  .auth()
+                  .signInWithPopup(ggProvider)
+                  .then(function (result) {
+                    window.location("re.html")
+                    var token = result.credential.accessToken;
+                    var user = result.user;
+                    console.log("User>>Goole>>>>", user);
+                    userId = user.uid;
+                    document.querySelector(".email").textContent = user.email;
+                    document.querySelector(".avatar").src = user.photoURL;
+  
+                    const dataUser = {
+                      id: userId,
+                      name: user.displayName,
+                      email: user.email,
+                      avatar: user.photoURL,
+                    };
+                    const useItem = localStorage.setItem(
+                      "user",
+                      JSON.stringify(dataUser)
+                    );
+                    
+                  })
+                  .catch(function (error) {
+                    console.error("Error: hande error here>>>", error.code);
+                  });
+              },
+              false
+            );
+  
+          //Sing in with Facebook
+          btnFaceBook &&
+            btnFaceBook.addEventListener(
+              "click",
+              (e) => {
+                firebase
+                  .auth()
+                  .signInWithPopup(fbProvider)
+                  .then(function (result) {
+                    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                    var token = result.credential.accessToken;
+                    // The signed-in user info.
+                    var user = result.user;
+                    console.log("User>>Facebook>", user);
+                    // ...
+                    userId = user.uid;
+                  })
+                  .catch(function (error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // The email of the user's account used.
+                    var email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    var credential = error.credential;
+                    // ...
+                    console.error(
+                      "Error: hande error here>Facebook>>",
+                      error.code
+                    );
+                  });
+              },
+              false
+            );
+          //jquery
+        })();
+        // if(){
+  
+        // }
+        </script>
+</body>
+</html>
