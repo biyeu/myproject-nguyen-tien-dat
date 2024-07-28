@@ -73,6 +73,10 @@
           <button id="btnGoogle" type="button" class="google-button">
             Login
           </button>
+          <span class="book-task-text">
+            <a href="/myproject-nguyen-tien-dat/web doc sach/read.html">Find book</a>
+            
+          </span>
           <span class="book-task-text bo">
             <i class="accout-show">Account</i>
             <ul class="account-task" id="show">
@@ -164,10 +168,11 @@
         document.querySelector(".display_name").textContent = "";
         document.querySelector(".email").textContent = "";
         document.querySelector(".avatar").src = "";
+        document.querySelector(".display_name").textContent = ""
+        document.querySelector(".name").textContent = "";
 
         // Remove user from localStorage
         localStorage.removeItem("user");
-        document.querySelector(".name").textContent = "";
       }
 
       // Call this function after a successful login to update the profile
@@ -282,7 +287,7 @@
       document.querySelector(".email").textContent = userInfo.email;
       document.querySelector(".avatar").src = userInfo.photoURL;
       document.querySelector(".imgpf").src = userInfo.photoURL;
-      document.querySelector(".name").textContent = "welcom " + userInfo.name;
+      document.querySelector(".name").textContent = userInfo.name;
 
 
 
