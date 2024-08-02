@@ -7,24 +7,218 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="all">
-        <div class="tiltle">
-            <span class="tit">
-                <a href="/myproject-nguyen-tien-dat/read/re.html">Book read</a>
-            </span>
-            <span class="tit">
-                <a href="/myproject-nguyen-tien-dat/web doc sach/read.html">Book search</a>
-            </span>
-            <span>
-                <img src="" alt="" class="tit-img">
-            </span>
-           
+    <div class="header">
+        <ul class="header-title">
+            <span class="header-title-text accout-show" id="read">Read book</span>
+            <span class="header-title-text accout-show" id="search">Search book</span>
+        </ul>
+        
+
+        <div class="log">
+            <button id="btnGoogle" type="button" class="google-button">
+                Login
+              </button>
+              <span class="book-task-text bo">
+                <i class="accout-show" id="hide">Account</i>
+                
+              </span>
         </div>
+
+        
+
+
     </div>
-
-
+    <ul class="account-task" id="show">
+        <div class="account-set">
+          <img src="" alt="" class="avatar" />
+          <span class="display_name"></span>
+          <span class="name"></span>
+          <p><span>Email: </span><span class="email"></span></p>
+          <button class="account-log" onclick="clickLogout()">
+            Log out
+          </button>
+          <div class="creat">
+            <button id="nse">
+              <i class="fa-solid fa-plus"></i>
+              Create
+            </button>
+          </div>
+      </ul>
+   
     
-  
-        <script></script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="forum.js"></script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+ 
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyB8ogMCDsC7JJ87SwZp7pOyNsh1H34Ej2M",
+    authDomain: "test-74c90.firebaseapp.com",
+    projectId: "test-74c90",
+    storageBucket: "test-74c90.appspot.com",
+    messagingSenderId: "49067418419",
+    appId: "1:49067418419:web:671da27a119ccf6c9f1446",
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  function clickLogout() {
+    // Clear user data from profile view
+    document.querySelector(".display_name").textContent = "";
+    document.querySelector(".email").textContent = "";
+    document.querySelector(".avatar").src = "";
+    document.querySelector(".display_name").textContent = ""
+    document.querySelector(".name").textContent = "";
+
+    // Remove user from localStorage
+    localStorage.removeItem("user");
+  }
+
+  // Call this function after a successful login to update the profile
+  function updateProfile(user) {
+    document.querySelector(".display_name").textContent = user.displayName;
+    document.querySelector(".email").textContent = user.email;
+    document.querySelector(".avatar").src = user.photoURL;
+    document.querySelector(".name").textContent = userInfo.name;
+  }
+
+  (function () {
+    console.log("Start file login with firebase");
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyD4UAGeeNt1gSgqiX0VrZAnp0pcXKgVe_Q",
+      authDomain: "ebook-c4db2.firebaseapp.com",
+      projectId: "ebook-c4db2",
+      storageBucket: "ebook-c4db2.appspot.com",
+      messagingSenderId: "599461847170",
+      appId: "1:599461847170:web:9e0252a57f46da6b7ed49b",
+    };
+    firebase.initializeApp(firebaseConfig);
+    // var database = firebase.database();
+
+    //Google singin provider
+    var ggProvider = new firebase.auth.GoogleAuthProvider();
+    //Facebook singin provider
+    var fbProvider = new firebase.auth.FacebookAuthProvider();
+    //Login in variables
+    const btnGoogle = document.getElementById("btnGoogle");
+    const btnFaceBook = document.getElementById("btnFacebook");
+
+    //Sing in with Google
+    btnGoogle &&
+      btnGoogle.addEventListener(
+        "click",
+        (e) => {
+          alert();
+          firebase
+            .auth()
+            .signInWithPopup(ggProvider)
+            .then(function (result) {
+              var token = result.credential.accessToken;
+              var user = result.user;
+              console.log("User>>Goole>>>>", user);
+              userId = user.uid;
+              document.querySelector(".email").textContent = user.email;
+              document.querySelector(".avatar").src = user.photoURL;
+
+              const dataUser = {
+                id: userId,
+                name: user.displayName,
+                email: user.email,
+                avatar: user.photoURL,
+              };
+              const useItem = localStorage.setItem(
+                "user",
+                JSON.stringify(dataUser)
+              );
+            })
+            .catch(function (error) {
+              console.error("Error: hande error here>>>", error.code);
+            });
+        },
+        false
+      );
+
+    //Sing in with Facebook
+    btnFaceBook &&
+      btnFaceBook.addEventListener(
+        "click",
+        (e) => {
+          firebase
+            .auth()
+            .signInWithPopup(fbProvider)
+            .then(function (result) {
+              // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+              var token = result.credential.accessToken;
+              // The signed-in user info.
+              var user = result.user;
+              console.log("User>>Facebook>", user);
+              // ...
+              userId = user.uid;
+            })
+            .catch(function (error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              // The email of the user's account used.
+              var email = error.email;
+              // The firebase.auth.AuthCredential type that was used.
+              var credential = error.credential;
+              // ...
+              console.error(
+                "Error: hande error here>Facebook>>",
+                error.code
+              );
+            });
+        },
+        false
+      );
+    //jquery
+  })();
+  // if(){
+
+  // }
+  const user = localStorage.getItem("user");
+  console.log(user);
+  const userInfo = JSON.parse(user);
+  document.querySelector(".display_name").textContent =
+    userInfo.displayName;
+  document.querySelector(".email").textContent = userInfo.email;
+  document.querySelector(".avatar").src = userInfo.photoURL;
+  document.querySelector(".imgpf").src = userInfo.photoURL;
+  document.querySelector(".name").textContent = userInfo.name;
+
+
+
+</script>
+<script>
+    document.querySelector("#hide").addEventListener("click", function () {
+document.querySelector("#show").style.display = "block";
+});
+document.querySelector("#show").addEventListener("click", function () {
+document.querySelector("#show").style.display = "none";
+});
+document.querySelector("#nse").addEventListener("click",function(){
+    window.location.href = "/myproject-nguyen-tien-dat/read/forum.html"
+})
+document.querySelector("#read").addEventListener("click",function(){
+    window.location.href = "/myproject-nguyen-tien-dat/read/re.html"
+})
+document.querySelector("#search").addEventListener("click",function(){
+    window.location.href = "/myproject-nguyen-tien-dat/web doc sach/read.html"
+})
+</script>
+<script src="main.js"></script>
 </body>
 </html>

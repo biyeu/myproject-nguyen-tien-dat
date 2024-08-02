@@ -1,0 +1,96 @@
+.google-button {
+    width: 99px;
+    height: 33px;
+    /* margin-top: 8px; */
+    border-radius: 23px;
+    border: none;
+    background-color: blue;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+
+  .accout-show{
+    font-size: 1.3rem;
+    margin-right: 25px;
+  }
+
+  .book-task-text,
+  .book-home-topic button {
+    margin-top: 13px;
+  }
+  
+  .book-task-text a {
+    color: #000;
+    font-size: 1.7rem;
+    text-decoration: none;
+  }
+
+  .book-task-text a {
+    color: #000;
+    font-size: 1.7rem;
+    text-decoration: none;
+  }
+  .creat button{
+    border: none;
+    background-color: #ffb600;
+    width: 100%;
+    border-radius: 25px;
+    margin-bottom: 23px;
+  }
+  .creat{
+    font-size: 1.3rem;
+  }
+  .account-task {
+    margin-left: 71%;
+    display: block;
+    max-width: 90%;
+    margin-top: 32px;
+    width: 23%;
+    /* visibility: hidden; */
+    display: none;
+    border-radius: 23px;
+    background-color: #f3f3f3;
+    border: solid 0.1px #000;
+  }
+
+  .account-set img {
+    border-radius: 50%;
+    margin-bottom: 19px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .account-set {
+    padding-top: 27px;
+    margin-left: 23px;
+    padding-right: 30px;
+  }
+  
+  .account-set p {
+    font-size: 16px;
+  }
+  .log{
+    margin-left: 61%;
+  }
+
+  .account-log {
+    border-radius: 25px;
+    border: none;
+    font-size: 1.2rem;
+    background-color: red;
+    width: 100%;
+    margin-bottom: 23px;
+  }
+
+  .header{
+    display: flex;
+    background-color: #e29300;
+    padding-top: 10px;
+    margin-left: 28px;
+    padding-left: 25px;
+    height: 54px;
+    border-radius: 36px;
+    margin-top: 14px;
+    width: 96%;
+    max-width: 100%;
+  }
