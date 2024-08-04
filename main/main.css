@@ -50,7 +50,7 @@
     display: none;
     border-radius: 23px;
     background-color: #f3f3f3;
-    border: solid 0.1px #000;
+    /* border: solid 0.1px #000; */
   }
 
   .account-set img {
@@ -61,9 +61,13 @@
   }
   
   .account-set {
+    border-radius: 23px;
+    padding-left: 23px;
+    position: absolute;
     padding-top: 27px;
-    margin-left: 23px;
-    padding-right: 30px;
+    margin-left: 0px;
+    border: 2px solid;
+    padding-right: 57px;
   }
   
   .account-set p {
@@ -93,4 +97,13 @@
     margin-top: 14px;
     width: 96%;
     max-width: 100%;
+  }
+
+  .content{
+    margin-top: 29px;
+    margin-left: 35px;
+  }
+
+  .content h1{
+    font-size: 2rem;
   }
