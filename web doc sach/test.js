@@ -90,8 +90,8 @@ $(document).ready(function() {
              <div class="card-body">
                <h5 class="card-title">${title}</h5>
                <p class="card-text">Author: ${author}</p>
-               <p class="card-text">Publisher: ${bookIsbn}</p>
-               <a target="_blank" href="${viewUrl}" class="btn btn-secondary">Read Book</a>
+               <p class="card-text">isbn: ${bookIsbn}</p>
+               
              </div>
            </div>
          </div>
