@@ -95,6 +95,7 @@ body{
 
   .header{
     display: flex;
+    color: #000;
     background-color: #e29300;
     padding-top: 10px;
     margin-left: 28px;
@@ -123,6 +124,7 @@ body{
     background-color: #f1f1f1;
     color: #000;
     margin-top: 23px;
+    margin-left: 77px;
     padding-bottom: 23px;
     padding-top: 23px;
     padding-left: 23px;
@@ -131,10 +133,60 @@ body{
 
     border-radius: 23px;
   }
+
+  .content h1{
+    text-align: center;
+  }
+
+  .m p{
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
   .content-sugg{
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     flex-wrap: wrap;
     /* padding-top: 23px; */
     /* flex-wrap: wrap; */
+  }
+
+  .footer {
+    margin-top: 23px;
+    
+  }
+
+  nav {
+    background-color: #757575;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+  
+  }
+  
+  nav li:hover ul {
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  nav li ul li {
+    display: block;
+    padding: 10px;
   }

@@ -49,7 +49,7 @@
     </div>
 
     <div class="content">
-      <h1>Python</h1>
+      <h1>Some books you can read</h1>
       <div class="content-sugg" id="cont">
         <div class="m">
           <img src="http://books.google.com/books/content?id=H9emM_LGFDEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="">
@@ -57,8 +57,47 @@
           <p>author: b</p>
           <span>isbn: 0321680561</span>
         </div>
+
+      
+      
+      
         
       </div>
+    </div>
+
+
+    <div class="footer">
+      <nav>
+        <ul>
+          <li>
+            Về chúng tôi
+            <ul>
+              <li><a href="#">Giới thiệu</a></li>
+              <li><a href="#">Cơ hội đầu tư</a></li>
+              <li><a href="#">Cơ cấu tổ chức</a></li>
+              <li><a href="#">Lĩnh vực hoạt động</a></li>
+            </ul>
+          </li>
+          <li>
+            Thông tin hữu ích
+            <ul>
+              <li><a href="#">Thỏa thuận sử dụng dịch vụ</a></li>
+              <li><a href="#">Tin dịch vụ</a></li>
+              <li><a href="#">Tuyển dụng</a></li>
+              <li><a href="#">Liên hệ</a></li>
+            </ul>
+          </li>
+          <li>
+            Tin tức
+            <ul>
+              <li><a href="#">VỤ</a></li>
+              <li><a href="#">Review sách</a></li>
+              <li><a href="#">Quyền lợi</a></li>
+              <li><a href="#">Lịch phát hành</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
     </div>
    
     
@@ -107,6 +146,11 @@
 
     // Remove user from localStorage
     localStorage.removeItem("user");
+    localStorage.setItem('islogin',0)
+
+    // 
+    window.location.reload()
+    // check()
   }
 
   // Call this function after a successful login to update the profile
@@ -116,6 +160,10 @@
     document.querySelector(".avatar").src = user.photoURL;
     document.querySelector(".name").textContent = userInfo.name;
   }
+
+
+
+  
 
   (function () {
     console.log("Start file login with firebase");
@@ -139,12 +187,14 @@
     const btnGoogle = document.getElementById("btnGoogle");
     const btnFaceBook = document.getElementById("btnFacebook");
 
-    //Sing in with Google
+    
+
+    //Sign in with Google
     btnGoogle &&
       btnGoogle.addEventListener(
         "click",
         (e) => {
-          alert();
+          // alert();
           firebase
             .auth()
             .signInWithPopup(ggProvider)
@@ -161,11 +211,14 @@
                 name: user.displayName,
                 email: user.email,
                 avatar: user.photoURL,
-              };
-              const useItem = localStorage.setItem(
+              };//
+              localStorage.setItem('islogin',1)
+              localStorage.setItem(
                 "user",
                 JSON.stringify(dataUser)
               );
+              window.location.reload()
+              // check()
             })
             .catch(function (error) {
               console.error("Error: hande error here>>>", error.code);

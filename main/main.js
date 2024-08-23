@@ -21,7 +21,7 @@ const data = [
         image_link: "http://books.google.com/books/content?id=ftA0yk1Z92wC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
         author: 'Mark Lutz,David Ascher',
         isbn: "0596551932",
-        title: "title: 0596551932"
+        title: "title: python for beginner"
     },
     {
         image_link: "http://books.google.com/books/content?id=6HgFEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
@@ -34,15 +34,33 @@ const data = [
         author: 'VIETSTEM',
         isbn: "6043369117",
         title: "title: Lập trình với Python"
-    }
+    },
+    {
+        image_link: "http://books.google.com/books/content?id=tDsnbQqOxdwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        author: 'John Lamm, Chuck Queener',
+        isbn: "9781616730048",
+        title: "title: Ferrari"
+    },
+    {
+        image_link: "http://books.google.com/books/content?id=_AUwce3kANoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        author: 'Fred Larimer',
+        isbn: "9781610608268",
+        title: "title: BMW Buyer's Guide"
+    },
+    {
+        image_link: "http://books.google.com/books/content?id=7Y6jjkmqByQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        author: 'Jeffrey K. Liker,Michael Hoseus',
+        isbn: "0071712577",
+        title: "title: Toyota Culture (PB)"
+    },
     ]
   
   const list = data.map((item, index) => {
     return `
            <div class="m">
             <img src=${item.image_link} alt="">
-            <p>title: ${item.title}</p>
-            <p>author: ${item.author}</p>
+            <p>${item.title}</p>
+            <span>author: ${item.author}</span>
             <span>isbn: ${item.isbn}</span>
           </div>
           `;
@@ -54,3 +72,19 @@ const data = [
 
 //   alert('bi')
 
+
+
+function check() {
+    console.log(document.querySelector("#btnGoogle"))
+    if (localStorage.getItem("islogin") == 0){
+        
+        document.querySelector("#btnGoogle").style.display = "inline-block"
+        
+      } else{
+        // window.location.reload()
+        document.querySelector("#btnGoogle").style.display = "none"
+      }
+}
+
+
+check()
