@@ -3,10 +3,14 @@ body {
   }
   
   .book-home {
+    
+    border-radius: 28rem;
+    margin-top: 19px;
     background-color: #e29300;
     color: #000;
     height: 70px;
-    width: 100%;
+    width: 97%;
+    margin-left: 22px;
   }
   .book-home-topic {
     display: flex;

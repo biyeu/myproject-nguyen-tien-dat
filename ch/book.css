@@ -10,6 +10,10 @@
   p {
     margin: 10px 0;
   }
+
+  .img-read{
+    width: 100%;
+  }
   
   .button {
     display: inline-block;
@@ -22,3 +26,8 @@
     text-decoration: none;
   }
   
+  body{
+    font-size: 1.2rem !important;
+    color: #fff !important;
+    background-color: #313131 !important;
+  }

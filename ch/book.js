@@ -29,12 +29,12 @@ function displayBook(book) {
 
     container.innerHTML = `
         <div style="text-align: center;">
-            <img src="${imageUrl}" alt="${title}" style="max-width: 100%; height: auto;">
+            <img src="${imageUrl}" alt="${title}" class = "img-read">
         </div>
         <h2>${title}</h2>
         <p>By ${authors}</p>
         <p>${description}</p>
-        <a href="${bookInfo.infoLink}" target="_blank" class="button">Read More</a>
+        <a href="/myproject-nguyen-tien-dat/main/main.html" target="_blank" class="button">back</a>
     `;
 }
 

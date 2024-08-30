@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var item, tile, author, publisher, bookLink, bookImg;
+  var item, tile, author, publisher, bookLink, bookImg, id,id2;
   var outputList = document.getElementById("list-output");
   var bookUrl = "https://www.googleapis.com/books/v1/volumes?q=";
   var apiKey = "key=AIzaSyDtXC7kb6a7xKJdm_Le6_BYoY5biz6s8Lw";
@@ -53,6 +53,7 @@ $(document).ready(function() {
         bookLink1 = item.volumeInfo.previewLink;
         bookIsbn = item.volumeInfo.industryIdentifiers[1].identifier
         bookImg1 = (item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : placeHldr ;
+        id = item.id
 
         item2 = response.items[i+1];
         title2 = item2.volumeInfo.title;
@@ -61,11 +62,13 @@ $(document).ready(function() {
         bookLink2 = item2.volumeInfo.previewLink;
         bookIsbn2 = item2.volumeInfo.industryIdentifiers[1].identifier
         bookImg2 = (item2.volumeInfo.imageLinks) ? item2.volumeInfo.imageLinks.thumbnail : placeHldr ;
+        console.log(item)
+        id2 = item2.id
 
         // in production code, item.text should have the HTML entities escaped.
         outputList.innerHTML += '<div class="row mt-4">' +
-                                formatOutput(bookImg1, title1, author1, publisher1, bookLink1, bookIsbn) +
-                                formatOutput(bookImg2, title2, author2, publisher2, bookLink2, bookIsbn2) +
+                                formatOutput(bookImg1, title1, author1, publisher1, bookLink1, bookIsbn,id) +
+                                formatOutput(bookImg2, title2, author2, publisher2, bookLink2, bookIsbn2,id2) +
                                 '</div>';
 
         console.log(outputList);
@@ -77,20 +80,20 @@ $(document).ready(function() {
    * @param bookImg title author publisher bookLink
    * @return htmlCard
    */
-   function formatOutput(bookImg, title, author, publisher, bookLink, bookIsbn) {
+   function formatOutput(bookImg, title, author, publisher, bookLink, bookIsbn, id) {
      // console.log(title + ""+ author +" "+ publisher +" "+ bookLink+" "+ bookImg)
      var viewUrl = 'book.html?isbn='+bookIsbn; //constructing link for bookviewer
      var htmlCard = `<div class="col-lg-6">
        <div class="card" style="">
          <div class="row no-gutters">
            <div class="col-md-4">
-             <img src="${bookImg}" class="card-img" alt="...">
+             <a href="/myproject-nguyen-tien-dat/ch/ch.html?id=${id}"><img src="${bookImg}" class="card-img" alt="..."></a>
            </div>
            <div class="col-md-8">
              <div class="card-body">
                <h5 class="card-title">${title}</h5>
                <p class="card-text">Author: ${author}</p>
-               <p class="card-text">isbn: ${bookIsbn}</p>
+               <p class="card-text">copy this code to read: ${bookIsbn}</p>
                
              </div>
            </div>
