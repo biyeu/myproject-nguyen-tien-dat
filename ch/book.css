@@ -1,9 +1,7 @@
 #book-container {
-    max-width: 600px;
+    /* max-width: 600px; */
     margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
   }
   
   h2,
@@ -12,7 +10,7 @@
   }
 
   .img-read{
-    width: 100%;
+    margin-right: 49px;
   }
   
   .button {
@@ -30,4 +28,8 @@
     font-size: 1.2rem !important;
     color: #fff !important;
     background-color: #313131 !important;
+  }
+
+  .al{
+    display: flex;
   }

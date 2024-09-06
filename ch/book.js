@@ -28,13 +28,22 @@ function displayBook(book) {
     const imageUrl = bookInfo.imageLinks ? bookInfo.imageLinks.thumbnail : '';
 
     container.innerHTML = `
-        <div style="text-align: center;">
-            <img src="${imageUrl}" alt="${title}" class = "img-read">
-        </div>
+        <div class="al">
+      <div style="text-align: center">
+        <img src="${imageUrl}" alt="${title}" class="img-read" />
+      </div>
+      <div class="about">
         <h2>${title}</h2>
         <p>By ${authors}</p>
         <p>${description}</p>
-        <a href="/myproject-nguyen-tien-dat/main/main.html" target="_blank" class="button">back</a>
+        <a
+          href="/myproject-nguyen-tien-dat/main/main.html"
+          target="_blank"
+          class="button"
+          >back</a
+        >
+      </div>
+    </div>
     `;
 }
 
